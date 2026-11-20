@@ -1,0 +1,40 @@
+/* CardMaker tour section + full-screen screenshot viewer. Matches the banner and CardMaker's arcade-cabinet look. */
+@font-face { font-family: "Arcade"; src: url("fonts/PressStart2P-Regular.ttf") format("truetype"); font-display: swap; }
+body.tourPage { display: block; }
+body.tourPage main { margin: 0 auto; }
+.tour { width: min(94vw, 1100px); margin: 46px auto 70px; text-align: left; }
+.tour h2 { font: 15px/1.6 "Arcade", ui-monospace, monospace; color: #ffc54a; letter-spacing: 2px; margin: 0 0 8px;
+  text-shadow: 0 0 12px rgba(255,197,74,.35); text-align: center; }
+.tour p.lead { color: #a99c9a; text-align: center; margin: 0 0 26px; font-size: 15px; }
+.tourGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; align-items: start; }
+.tourTile { appearance: none; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 16px; position: relative;
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+.tourTile img { display: block; width: 100%; height: auto; border-radius: 16px; }
+.tourTile:hover, .tourTile:focus-visible { transform: translateY(-4px); outline: none;
+  box-shadow: 0 0 0 2px rgba(255,122,43,.8), 0 14px 38px rgba(255,90,54,.35); }
+.tourTile:active { transform: translateY(0) scale(.98); }
+.tourCount { position: absolute; right: 14px; bottom: 12px; font: 9px/1 "Arcade", monospace; color: #2a0d06;
+  background: linear-gradient(135deg, #ff3d2e, #ff7a2b 55%, #ffc54a); padding: 7px 9px; border-radius: 7px; }
+
+/* Viewer */
+body.tourOpen { overflow: hidden; }
+.tourViewer { position: fixed; inset: 0; z-index: 100; background: rgba(8,7,12,.94); backdrop-filter: blur(6px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 14px 18px; gap: 12px; }
+.tourViewer[hidden] { display: none; }
+.tvTop { width: min(96vw, 1440px); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.tvTitle { font: 11px/1.4 "Arcade", monospace; color: #ffc54a; letter-spacing: 1.5px; }
+.tvClose { appearance: none; border: 1px solid #48434f; background: #1b1b25; color: #f7eddb; border-radius: 10px;
+  width: 42px; height: 42px; font-size: 22px; cursor: pointer; }
+.tvImg { display: block; max-width: min(96vw, 1440px); max-height: calc(100svh - 190px); width: auto; height: auto;
+  border-radius: 12px; box-shadow: 0 0 0 1px #302a3c, 0 20px 60px rgba(0,0,0,.6), 0 0 40px rgba(255,90,54,.12); cursor: pointer; }
+.tvCaption { color: #f7eddb; font-size: 16px; text-align: center; max-width: 900px; min-height: 1.4em; margin: 0; }
+.tvNav { display: flex; align-items: center; gap: 14px; }
+.tvNav > button { appearance: none; border: 1px solid #48434f; background: #1b1b25; color: #f9e9d3; border-radius: 10px;
+  padding: 11px 18px; font-size: 15px; font-weight: 700; cursor: pointer; min-width: 110px; }
+.tvNav > button.tvNext { background: linear-gradient(135deg, #ff3d2e, #ff7a2b 55%, #ffc54a); border-color: #ff8a3a; color: #fff;
+  text-shadow: 0 1px 2px rgba(80,20,0,.5); }
+.tvNav > button:disabled { opacity: .35; cursor: default; }
+.tvDots { display: flex; gap: 7px; }
+.tvDots button { appearance: none; width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; background: #48434f; cursor: pointer; }
+.tvDots button.on { background: #ff7a2b; box-shadow: 0 0 8px rgba(255,122,43,.8); }
+@media (max-width: 600px) { .tvCaption { font-size: 14px; } .tvNav > button { min-width: 80px; padding: 10px 12px; } .tvImg { max-height: calc(100svh - 230px); } }
